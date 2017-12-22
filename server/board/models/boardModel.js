@@ -26,26 +26,48 @@
 // 	}
 // }
 
-var mongoClient = require("mongodb").mongoClient;
+var mongoClient = require("mongodb").MongoClient;
 var db;
-mongoClient.connect("mongodb://localhost:27017/board", {}, function(err, boardDb){});
+mongoClient.connect("mongodb://localhost:27017/board", {}, function(err, boardDB){
+	if ( err ) {
+		console.log(err);
+	} else {
+		db = boardDB;
+		db.board = db.collection("board");
+		db.seq = db.collection("seq");
+		console.log("DB 접속 완료");
+	}
+});
 
 module.exports = {
 	list : function(cb){
 		// DB 호출 작업
-		console.log("11111");
-		
-		db.board.find("select", function(err, result){
-			cb(result);
-		});		
+		db.board.find({}, {content: 0})
+						.sort({_id: -1})
+						.toArray(function(err, result){
+							cb(result);
+						});
 	},
 	show : function(no, cb){
-		cb(list[no-1]);
+		db.board.findOneAndUpdate({_id: no}, {$inc: {view: 1}}, function(err, result) {
+			cb(result.value);
+		});
 	},
 	create : function(board, cb){
-		cb(3);
+		db.seq.findOneAndUpdate({}, {$inc: {seq: 1}}, function(err, result){
+			board._id = result.value.seq;
+			board.view = 0;
+			// board.regdate = new Date();
+			board.regdate = require("date-format").asString('yyyy-MM-dd hh:mm', new Date());
+			db.board.insert(board, function(err, result){
+				cb(board._id);
+			});
+		});
 	},
 	remove : function(no, cb){
-		cb();
+		console.log("삭제no : "  + no);
+		db.board.remove({_id: no}, function(err, result){
+			cb();
+		});
 	}
 }

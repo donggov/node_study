@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>Node.js 게시판</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-</head>
-<body>
-	<header>
-		<div class="container">
-			<h1><%= title %></h1>
-		</div>
-	</header>
+<% layout('../layout/layout') %>
+
 	<div class="container">
 		<section>
-			<form class="form-horizontal" method="post" action="/board/1">
+			<form class="form-horizontal" method="post" action="/board/<%= board._id %>">
 				<input type="hidden" name="_method" value="delete">
 				<% if (board) {%>
 					<div class="form-group">
@@ -47,10 +36,3 @@
 			</form>
 		</section>
 	</div>
-	<footer>
-		<div class="container">
-			<p class="text-muted">게시판 정책 및 약관 회사소개 광고 마이비즈니스제휴 제안 이용약관 개인정보취급방침 청소년보호 정책 고객센터</p>
-		</div>
-	</footer>
-</body>
-</html>
