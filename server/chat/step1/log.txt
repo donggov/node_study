@@ -1,0 +1,7 @@
+Wed Dec 20 2017 12:17:47 GMT+0900 (대한민국 표준시) 200 /index.html
+Wed Dec 20 2017 12:17:49 GMT+0900 (대한민국 표준시) 404 /favicon.ico
+Wed Dec 20 2017 12:18:04 GMT+0900 (대한민국 표준시) 200 /chat.html?username=%ED%8C%90%EC%84%9D
+Wed Dec 20 2017 12:18:16 GMT+0900 (대한민국 표준시) 404 /logout
+Wed Dec 20 2017 12:18:19 GMT+0900 (대한민국 표준시) 404 /logout
+Wed Dec 20 2017 12:18:20 GMT+0900 (대한민국 표준시) 200 /index.html
+Wed Dec 20 2017 12:19:04 GMT+0900 (대한민국 표준시) 200 /chat.html?username=%ED%8C%90%EC%84%9D

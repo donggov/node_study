@@ -1,0 +1,1 @@
+console.log('package.json의 main.js 로딩');

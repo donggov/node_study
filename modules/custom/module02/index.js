@@ -1,0 +1,1 @@
+console.log('폴더일 경우 index.js 로딩');
