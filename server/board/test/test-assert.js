@@ -6,6 +6,8 @@ var result = {title: '테스트', writer: '김철수'};
 
 console.log('테스트 시작.');
 
+assert(a == 10);
 
 
 console.log('테스트 통과.');
+

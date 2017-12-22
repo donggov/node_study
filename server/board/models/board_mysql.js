@@ -19,20 +19,27 @@ var sql = {
 module.exports = {
 	// 게시물 목록 조회
 	list: function(cb){
-		
+		pool.query(sql.list, function(err, result){
+			cb(result);
+		});
 	},
 	// 게시물 상세 조회
 	show: function(no, cb){
-		
+		pool.query(sql.show, [no], function(err, result){
+			pool.query(sql.incView, [no]);
+			cb(result[0]);
+		});
 	},
 	// 게시물 등록
 	create: function(board, cb){
 		board.regdate = require('date-format').asString('yyyy-MM-dd hh:mm', new Date());
-		
+		pool.query(sql.create, [no], function(err, result){
+			cb(result.insertId);
+		});
 	},
 	// 게시물 삭제
 	remove: function(no, cb){
-		
+		pool.query(sql.remove, [no], cb);
 	}
 };
 

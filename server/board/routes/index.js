@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
   res.redirect("/board");
 });
 
+// router.get('/users', function(req, res, next) {
+//   controller.list(req, res);
+// });
+
 router.get('/board', function(req, res, next) {
   controller.list(req, res);
 });
